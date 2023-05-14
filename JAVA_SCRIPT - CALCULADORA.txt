@@ -1,0 +1,86 @@
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, Button } from 'react-native';
+import Constants from 'expo-constants';
+
+import { Card } from 'react-native-paper';
+
+
+export default function App() {
+  const [entrada1, setEntrada1] = useState("");
+  const [entrada2, setEntrada2] = useState("");
+  const [resultado, setResultado] = useState("");
+
+  const soma = () => {
+    setResultado(parseInt(entrada1) + parseInt(entrada2));
+  };
+
+  
+  return (
+    <View style={styles.container}>
+     
+        <Text style={styles.paragraph}>Calculadora</Text>
+
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Digite o primeiro número"
+            onChangeText={(value) => setEntrada1(value)}
+            value={entrada1}
+            style={styles.input}
+            keyboardType="numeric"
+          />
+          <TextInput
+            placeholder="Digite o segundo número"
+            onChangeText={(value) => setEntrada2(value)}
+            value={entrada2}
+            style={styles.input}
+            keyboardType="numeric"
+          />
+        </View>
+
+      
+     
+      
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+  },
+  
+  paragraph: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  
+  input: {
+    fontSize:12,
+    borderWidth: 1,
+    borderColor: 'black',
+    padding: 10,
+    width: '50%',
+  },
+  
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 20,
+  },
+  
+  resultado: {
+    fontSize: 18,
+    textAlign: 'center',
+  },
+});

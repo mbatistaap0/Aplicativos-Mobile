@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, Button } from 'react-native';
+import Constants from 'expo-constants';
+import { Card } from 'react-native-paper';
+
+export default function App() {
+  const [text, setText] = useState("");
+  const [text2, setText2] = useState("");
+
+  function _onPressButton() {
+    let num = parseInt(text);
+    let num2 = parseInt(text2);
+    let soma = 0;
+    let mensagem = '';
+    
+
+    soma = (num + num2);
+    mensagem = soma;
+
+    alert("A soma é igual a: "+ soma);
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.paragraph}>Confere número</Text>
+
+      <Card>
+        <TextInput
+          placeholder="Informe um número:"
+          onChangeText={text => setText(text)}
+          defaultValue={text}
+        />
+        <TextInput
+          placeholder="Informe outro número:"
+          onChangeText={text2 => setText2(text2)}
+          defaultValue={text2}
+        />
+      </Card>
+
+      <Button onPress={_onPressButton} title="Clique" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 15,
+  },
+  paragraph: {
+    margin: 30,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});

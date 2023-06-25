@@ -1,0 +1,61 @@
+﻿import * as React from 'react';
+import { Text, View, StyleSheet, FlatList, Image } from 'react-native';
+import Constants from 'expo-constants';
+
+export default function App() {
+  const dados = [
+    { key:'    Hot Dog', img: 'https://img.freepik.com/fotos-premium/cachorro-quente-isolado-no-fundo-branco_266402-80.jpg', preco: '. . . . . . . . . . R$12,00'}, 
+
+    { key:'    Cheeseburguer', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz1i3zv4Xs7up85-PUOZ1SKF68j4XFf1oCxyuFt4sugHwpHWULjsf1cjoMOhRQR81pu3Q&usqp=CAU', preco: '. . . . . . R$18,00'},
+
+    { key:'    X-Vegan', img:'https://img.freepik.com/fotos-premium/hamburguer-americano-de-hamburguer-duplo-grelhado-isolado_219193-6641.jpg', preco: '. . . . . . . . . . R$23,00'},
+
+    { key:'    Milkshake', img:'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/5/1/0/FNM_060113-Almost-Famous-Milkshakes-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1371616331513.jpeg', preco: '. . . . . . . . . . R$14,00'},
+    
+    { key:'    Açaí', img:'https://img.freepik.com/fotos-premium/batido-de-sorvete-brasileiro-de-acai-berry-em-copo-plastico-com-banana-morango-e-leite-condensado-isolado-no-fundo-branco-vista-frontal-para-menu-e-midia-social_317399-1245.jpg?w=2000', preco: '. . . . . . . . . . R$15,00'}
+  ];
+
+  const renderItem = ( {item} ) => (
+      <View style={ {flexDirection: "row", padding: 5} } >
+      <Image source ={ {uri: item.img} } style={ {width: 75, height: 58} }/>
+      <Text>{item.key} </Text>
+      <Text>{item.preco} </Text>
+      </View>
+  )
+  
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.paragraph}>
+        MENU
+      </Text>
+      <FlatList
+        data={dados}
+        renderItem={renderItem}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ECDBB6',
+    padding: 18,
+  },
+  paragraph: {
+    fontFamily: 'Georgia',
+    margin: 25,
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+    text: {
+    color: 'white',
+    fontSize: 17,
+    lineHeight: 10 ,
+    fontWeight: 'bold',
+  },
+});
